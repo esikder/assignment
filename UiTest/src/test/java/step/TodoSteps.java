@@ -9,10 +9,7 @@ import page.TodoPage;
 public class TodoSteps {
     TodoPage todoPage =  new TodoPage(BrowserBeanFactory.driver);
 
-    @Given("^I navigate to \"([^\"]*)\"$")
-    public void iNavigateTo(String url) throws Throwable {
-        todoPage.goToUrl(url);
-    }
+
     @And("^I enter \"([^\"]*)\"$")
     public void enterItemName(String name){
         todoPage.addItem(name);
@@ -25,5 +22,10 @@ public class TodoSteps {
     @Then("^I see \"([^\"]*)\" being added in the ToDo list$")
     public void iSeeBeingAddedInTheToDoList(String arg0) throws Throwable {
 
+    }
+
+    @Given("^I am on ToDo list page$")
+    public void iAmOnToDoListPage()  {
+        todoPage.goToUrl("http://localhost:4000/");
     }
 }

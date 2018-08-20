@@ -1,5 +1,6 @@
 package page;
 
+import helper.ConfigHandler;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -17,7 +18,9 @@ public class TodoPage  extends PageObject {
     private WebElement taskDetails;
 
     public  TodoPage goToUrl(String url){
-        driver.get(url);
+
+        driver.get(ConfigHandler.getConfigValue("baseURI")+
+                ConfigHandler.getConfigValue("port"));
         return this;
     }
 

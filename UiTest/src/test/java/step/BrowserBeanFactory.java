@@ -5,8 +5,6 @@ import cucumber.api.java.Before;
 import helper.BrowserLibrary;
 import org.openqa.selenium.WebDriver;
 
-import java.io.IOException;
-
 
 public class BrowserBeanFactory {
 
@@ -14,12 +12,9 @@ public class BrowserBeanFactory {
    public static WebDriver driver;
 
     @Before
-    public  WebDriver getDriver() throws InterruptedException, IOException {
-
+    public  WebDriver getDriver() {
         BrowserLibrary b= new BrowserLibrary();
-
         driver = b.getbrowser();
-
         return driver;
     }
 

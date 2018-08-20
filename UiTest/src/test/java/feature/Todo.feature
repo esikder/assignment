@@ -4,7 +4,7 @@ Feature: ToDo List test containing following features :
 
   @de
   Scenario: I add item to ToDo list
-    Given I navigate to "http://localhost:4000/"
+    Given I am on ToDo list page
     And I enter "dd"
     When I press Enter
     Then I see "dd" being added in the ToDo list
