@@ -11,7 +11,8 @@ public class TodoPage {
 
 
     public  TodoPage(WebDriver d){
-        PageFactory.initElements(driver, this);
+        PageFactory.initElements(d, this);
+        driver = d;
     }
 
     @FindBy(id="addTaskInput")

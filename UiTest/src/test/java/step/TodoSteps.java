@@ -19,6 +19,7 @@ public class TodoSteps {
     public void iNavigateTo(String url) throws Throwable {
         System.setProperty("webdriver.chrome.driver","/Users/erfanasikder/Documents/Tech/UiTest/src/test/resources/chromedriver");
         driver = new ChromeDriver();
+        todoPage = new TodoPage(driver);
         todoPage.goToUrl(url);
     }
     @And("^I enter \"([^\"]*)\"$")
