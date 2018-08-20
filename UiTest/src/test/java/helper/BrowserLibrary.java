@@ -3,6 +3,7 @@ package helper;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
+import org.openqa.selenium.remote.DesiredCapabilities;
 
 import java.io.IOException;
 
@@ -17,8 +18,11 @@ public class BrowserLibrary {
                 driver = new ChromeDriver();
                 break;
             case "ff":
-                System.setProperty("webdriver.gecko.driver", ConfigHandler.getConfigValue("ffPath"));
-                driver = new FirefoxDriver();
+                System.setProperty("webdriver.gecko.driver",  ConfigHandler.getConfigValue("ffPath"));
+
+                DesiredCapabilities capabilities = DesiredCapabilities.firefox();
+                capabilities.setCapability("marionette", true);
+                driver = new FirefoxDriver(capabilities);
                 break;
             default:
                 System.setProperty("webdriver.chrome.driver", ConfigHandler.getConfigValue("chromePath"));
