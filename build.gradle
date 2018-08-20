@@ -17,8 +17,6 @@ dependencies {
     testCompile 'info.cukes:cucumber-java:1.2.4'
     testCompile 'info.cukes:cucumber-junit:1.2.4'
     testCompile 'info.cukes:cucumber-spring:1.2.4'
-    compile group: 'org.seleniumhq.selenium', name: 'selenium-remote-driver', version: '3.0.1'
-    testCompile 'org.seleniumhq.selenium:selenium-java:3.0.1'
 
     testCompile 'org.springframework:spring-test:4.2.4.RELEASE'
     testCompile 'org.springframework:spring-context:4.2.4.RELEASE'

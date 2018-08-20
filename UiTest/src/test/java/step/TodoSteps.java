@@ -9,7 +9,6 @@ import page.TodoPage;
 public class TodoSteps {
     TodoPage todoPage =  new TodoPage(BrowserBeanFactory.driver);
 
-
     @Given("^I navigate to \"([^\"]*)\"$")
     public void iNavigateTo(String url) throws Throwable {
         todoPage.goToUrl(url);

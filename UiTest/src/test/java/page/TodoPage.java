@@ -17,7 +17,6 @@ public class TodoPage  extends PageObject {
     private WebElement taskDetails;
 
     public  TodoPage goToUrl(String url){
-
         driver.get(url);
         return this;
     }
