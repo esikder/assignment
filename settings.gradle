@@ -1,2 +1,3 @@
 rootProject.name = 'Tech'
+include 'UiTest'
 

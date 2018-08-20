@@ -12,18 +12,35 @@ repositories {
 
 dependencies {
     testCompile 'io.rest-assured:rest-assured:3.1.0'
+
+    testCompile 'junit:junit:4.12'
     testCompile 'info.cukes:cucumber-java:1.2.4'
     testCompile 'info.cukes:cucumber-junit:1.2.4'
-    testCompile 'junit:junit:4.12'
-    compile group: 'org.seleniumhq.selenium', name: 'selenium-java', version: '2.41.0'
+    testCompile 'info.cukes:cucumber-spring:1.2.4'
+    compile group: 'org.seleniumhq.selenium', name: 'selenium-remote-driver', version: '3.0.1'
+    testCompile 'org.seleniumhq.selenium:selenium-java:3.0.1'
+
     testCompile 'org.springframework:spring-test:4.2.4.RELEASE'
     testCompile 'org.springframework:spring-context:4.2.4.RELEASE'
+    testCompile 'info.cukes:gherkin:2.12.2'
 }
 
+task wrapper(type: Wrapper) {
+    gradleVersion = '3.5'
+}
 
 idea {
     module {
         sourceDirs -= file('test')
         testSourceDirs += file('test')
+    }
+}
+
+
+test {
+    systemProperty "spring.profiles.active", System.properties.getProperty("spring.profiles.active")
+    reports {
+        junitXml.enabled = false
+        html.enabled = true
     }
 }

@@ -5,12 +5,18 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Scope;
+import org.springframework.stereotype.Component;
 
+@SuppressWarnings("unused")
+@Component
+@Scope("cucumber-glue")
 public class TodoPage extends PageObject {
     public  WebDriver driver;
 
+
     @Autowired
-    public TodoPage(WebDriver d){
+    public  TodoPage(WebDriver d){
         super(d);
     }
 
