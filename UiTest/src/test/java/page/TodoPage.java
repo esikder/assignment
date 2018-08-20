@@ -6,13 +6,13 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
-public class TodoPage {
-    public  WebDriver driver;
+public class TodoPage  extends PageObject {
 
 
-    public  TodoPage(WebDriver d){
-        PageFactory.initElements(d, this);
-        driver = d;
+
+    public TodoPage(WebDriver driver){
+        super(driver);
+        PageFactory.initElements(driver, this);
     }
 
     @FindBy(id="addTaskInput")
