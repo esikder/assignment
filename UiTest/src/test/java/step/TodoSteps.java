@@ -4,18 +4,21 @@ import cucumber.api.java.en.And;
 import cucumber.api.java.en.Given;
 import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
-import org.springframework.beans.factory.annotation.Autowired;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.chrome.ChromeDriver;
 import page.TodoPage;
 
 public class TodoSteps {
-
-    @Autowired
+    WebDriver driver;
     TodoPage todoPage;
+
 
 
 
     @Given("^I navigate to \"([^\"]*)\"$")
     public void iNavigateTo(String url) throws Throwable {
+        System.setProperty("webdriver.chrome.driver","/Users/erfanasikder/Documents/Tech/UiTest/src/test/resources/chromedriver");
+        driver = new ChromeDriver();
         todoPage.goToUrl(url);
     }
     @And("^I enter \"([^\"]*)\"$")

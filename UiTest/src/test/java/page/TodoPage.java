@@ -4,20 +4,14 @@ import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.context.annotation.Scope;
-import org.springframework.stereotype.Component;
+import org.openqa.selenium.support.PageFactory;
 
-@SuppressWarnings("unused")
-@Component
-@Scope("cucumber-glue")
-public class TodoPage extends PageObject {
+public class TodoPage {
     public  WebDriver driver;
 
 
-    @Autowired
     public  TodoPage(WebDriver d){
-        super(d);
+        PageFactory.initElements(driver, this);
     }
 
     @FindBy(id="addTaskInput")
@@ -26,6 +20,7 @@ public class TodoPage extends PageObject {
     private WebElement taskDetails;
 
     public  TodoPage goToUrl(String url){
+
         driver.get(url);
         return this;
     }
