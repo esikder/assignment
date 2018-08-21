@@ -3,6 +3,7 @@ package page;
 import helper.ActionWrapper;
 import helper.ConfigHandler;
 import org.junit.Assert;
+import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -21,6 +22,9 @@ public class TodoPage  extends PageObject {
     @FindBy(id="taskDetails")
     private WebElement taskDetails;
 
+    @FindBy(id="taskDetails")
+    private List<WebElement> taskDetailsList;
+
     @FindBy(id="deleteTask")
     private WebElement deleteButton;
     @FindBy(id="deleteTask")
@@ -28,10 +32,9 @@ public class TodoPage  extends PageObject {
     @FindBy(id="taskSelect")
     private WebElement selectTask;
 
-    ActionWrapper action=new ActionWrapper(driver);;
+    ActionWrapper action=new ActionWrapper(driver);
 
-    public  TodoPage goToUrl(String url){
-
+    public  TodoPage goToUrl(){
         driver.get(ConfigHandler.getConfigValue("baseURI")+
                 ConfigHandler.getConfigValue("port"));
         return this;
@@ -47,11 +50,18 @@ public class TodoPage  extends PageObject {
     }
     public  TodoPage verifyListItem(String name){
         action.waitUntilElementAvailable(deleteButton);
+        Assert.assertTrue(taskDetails.getAttribute("value").contains(name));
         return this;
     }
 
     public TodoPage deleteItem(String name) {
-        action.clickWebElement(deleteButton);
+        WebElement deleteSpecificItem= null;
+        for (WebElement item : taskDetailsList) {
+            if(item.getAttribute("value").contains(name))
+                deleteSpecificItem =  item.findElement(By.xpath("following-sibling::span[@id='deleteTask']"));
+
+        }
+        action.clickWebElement(deleteSpecificItem);
         return this;
 
     }
@@ -66,8 +76,16 @@ public class TodoPage  extends PageObject {
         return this;
     }
 
-    public void verifyTaskStatusIsCompleted() {
+    public TodoPage verifyTaskStatusIsCompleted() {
         action.waitUntilElementAvailable(taskDetails);
         Assert.assertTrue(taskDetails.getAttribute("class").contains("todo__done"));
+        return this;
+    }
+
+
+    public void editItem(String name) {
+        taskDetails.clear();
+        taskDetails.sendKeys(name);
+        taskDetails.sendKeys(Keys.ENTER);
     }
 }
