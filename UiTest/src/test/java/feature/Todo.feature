@@ -1,6 +1,6 @@
 
 Feature: ToDo List test containing following features :
-  As a user I should be able to add , edit, update, delete and complete item in todo list.
+  As a user I should be able to add , edit, complete, delete and complete item in todo list.
 
   @de
   Scenario: I add item to ToDo list
@@ -8,3 +8,7 @@ Feature: ToDo List test containing following features :
     And I enter "dd"
     When I press Enter
     Then I see "dd" being added in the ToDo list
+    When I select an item
+    Then the item should be completed
+    When I delete "dd"
+    Then I should not see "dd" in the ToDo list
