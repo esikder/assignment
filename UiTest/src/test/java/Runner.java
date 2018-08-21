@@ -12,7 +12,7 @@ import org.junit.runner.RunWith;
                 "pretty"
         },
         features = {"src/test/java/feature/"},
-        tags = {"@de"},
+        tags = {},
         strict = false,
         glue = {"step"}
 

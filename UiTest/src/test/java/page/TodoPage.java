@@ -21,10 +21,8 @@ public class TodoPage  extends PageObject {
     private WebElement addTaskInput;
     @FindBy(id="taskDetails")
     private WebElement taskDetails;
-
     @FindBy(id="taskDetails")
     private List<WebElement> taskDetailsList;
-
     @FindBy(id="deleteTask")
     private WebElement deleteButton;
     @FindBy(id="deleteTask")
@@ -59,11 +57,9 @@ public class TodoPage  extends PageObject {
         for (WebElement item : taskDetailsList) {
             if(item.getAttribute("value").contains(name))
                 deleteSpecificItem =  item.findElement(By.xpath("following-sibling::span[@id='deleteTask']"));
-
         }
         action.clickWebElement(deleteSpecificItem);
         return this;
-
     }
 
     public TodoPage waitUntilElementIsNotDelete(String name) {
@@ -81,7 +77,6 @@ public class TodoPage  extends PageObject {
         Assert.assertTrue(taskDetails.getAttribute("class").contains("todo__done"));
         return this;
     }
-
 
     public void editItem(String name) {
         taskDetails.clear();

@@ -8,17 +8,17 @@ import org.openqa.selenium.remote.DesiredCapabilities;
 public class BrowserLibrary {
     public WebDriver getbrowser()  {
         WebDriver driver;
-
-        switch(System.getenv("BROWSER")){
-
-
+        String browserPath;
+        switch(ConfigHandler.getConfigValue("browser")){
                 case "chrome":
-                System.setProperty("webdriver.chrome.driver", ConfigHandler.getConfigValue("chromePath"));
+                browserPath =BrowserLibrary.class.getClassLoader().getResource("chromedriver").getPath();
+                System.setProperty("webdriver.chrome.driver", browserPath);
                 driver = new ChromeDriver();
                 break;
 
                 case "ff":
-                System.setProperty("webdriver.gecko.driver",  ConfigHandler.getConfigValue("ffPath"));
+                browserPath =BrowserLibrary.class.getClassLoader().getResource("geckodriver").getPath();
+                System.setProperty("webdriver.gecko.driver", browserPath);
                 DesiredCapabilities capabilities = DesiredCapabilities.firefox();
                 capabilities.setCapability("marionette", true);
                 driver = new FirefoxDriver(capabilities);

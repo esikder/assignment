@@ -10,7 +10,7 @@ public class TodoSteps {
     TodoPage todoPage =  new TodoPage(BrowserBeanFactory.driver);
 
 
-    @And("^I enter \"([^\"]*)\"$")
+    @And("^I enter an item to the list \"([^\"]*)\"$")
     public void enterItemName(String name){
         todoPage.addItem(name);
     }
@@ -19,18 +19,11 @@ public class TodoSteps {
         todoPage.enterItem();
     }
 
-    @Then("^I see \"([^\"]*)\" being added in the ToDo list$")
-    public void iSeeBeingAddedInTheToDoList(String name) throws Throwable {
-       todoPage.verifyListItem(name);
-    }
 
     @Given("^I am on ToDo list page$")
     public void iAmOnToDoListPage()  {
-        todoPage.goToUrl("http://localhost:4000/");
+        todoPage.goToUrl();
     }
-
-
-
 
 
     @When("^I delete \"([^\"]*)\"$")
@@ -51,5 +44,16 @@ public class TodoSteps {
     @Then("^the item should be completed$")
     public void theItemShouldBeCompleted() throws Throwable {
         todoPage.verifyTaskStatusIsCompleted();
+    }
+
+
+    @Then("^I see \"([^\"]*)\" is available in the ToDo List$")
+    public void iSeeIsAvailableInTheToDoList(String name) throws Throwable {
+        todoPage.verifyListItem(name);
+    }
+
+    @When("^I edit item name to \"([^\"]*)\"$")
+    public void iEditItemNameTo(String name) throws Throwable {
+       todoPage.editItem(name);
     }
 }
