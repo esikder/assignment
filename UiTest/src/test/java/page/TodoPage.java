@@ -48,8 +48,16 @@ public class TodoPage  extends PageObject {
     }
     public  TodoPage verifyListItem(String name){
         action.waitUntilElementAvailable(deleteButton);
-        Assert.assertTrue(taskDetails.getAttribute("value").contains(name));
+        Boolean found = false;
+            for (WebElement item : taskDetailsList) {
+                if (item.getAttribute("value").contains(name)){
+                    found = true;
+                    break;
+                }
+        }
+        Assert.assertTrue(found);
         return this;
+
     }
 
     public TodoPage deleteItem(String name) {
@@ -58,7 +66,7 @@ public class TodoPage  extends PageObject {
             if(item.getAttribute("value").contains(name))
                 deleteSpecificItem =  item.findElement(By.xpath("following-sibling::span[@id='deleteTask']"));
         }
-        action.clickWebElement(deleteSpecificItem);
+        deleteSpecificItem.click();
         return this;
     }
 

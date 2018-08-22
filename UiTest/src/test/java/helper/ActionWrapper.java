@@ -1,7 +1,9 @@
 package helper;
 
+import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.ui.ExpectedCondition;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import page.PageObject;
@@ -15,6 +17,19 @@ public class ActionWrapper extends PageObject {
     public  ActionWrapper(WebDriver driver){
         super(driver);
     }
+
+    public void waitUntilPageLoad(){
+        ExpectedCondition<Boolean> pageLoadCondition = new
+                ExpectedCondition<Boolean>() {
+                    public Boolean apply(WebDriver driver) {
+                        return ((JavascriptExecutor)driver).executeScript("return document.readyState").equals("complete");
+                    }
+                };
+        WebDriverWait wait = new WebDriverWait(driver, 30);
+        wait.until(pageLoadCondition);
+
+    }
+
     public void clickWebElement(WebElement e)
     {
         WebDriverWait wait =  new WebDriverWait(driver,  Long.parseLong(ConfigHandler.getConfigValue("timeoutInSeconds")));
