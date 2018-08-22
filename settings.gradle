@@ -1,5 +1,6 @@
 rootProject.name = 'Tech'
-include 'UiTest'
-include 'IntgTest'
-include 'Common'
+
+
+include 'apiTest'
+include 'functionalTest'
 
