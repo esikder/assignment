@@ -1,4 +1,5 @@
 rootProject.name = 'Tech'
 include 'UiTest'
 include 'IntgTest'
+include 'Common'
 
