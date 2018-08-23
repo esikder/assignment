@@ -1,19 +1,20 @@
 package todoComponent;
 
 import io.restassured.RestAssured;
+import org.hamcrest.Matchers;
 import org.junit.Before;
 import org.junit.Test;
 
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.InputStream;
-import java.util.HashMap;
-import java.util.Map;
 import java.util.Properties;
 
 import static io.restassured.RestAssured.given;
 
-public class ToDoApiTest {
+public class ToDoAdd {
+
+
     @Before
     public void setup() throws IOException {
         Properties prop =  new Properties();
@@ -24,26 +25,23 @@ public class ToDoApiTest {
         RestAssured.baseURI = prop.getProperty("baseURI");
         RestAssured.port = Integer.parseInt( prop.getProperty("port"));
     }
-
     @Test
-    public void testGetList(){
+    public void testAddItemToList(){
+        String itemName = "testing";
+        Integer done = 1;
+
+
         given()
-                .when()
-                .get("all").then()
-                .statusCode(200);
+                .contentType("application/json;charset=UTF-8")
+                .body("{\"name\":\""+itemName+"\",\"done\":"+done+"}")
+                .when().post("add")
+                .then()
+                .statusCode(200)
+                .body("name",Matchers.is(itemName)).body("done", Matchers.is(false))
+                .body("__v", Matchers.is(0));
 
     }
 
-    @Test
-    public void testUpdateItemInList(){
-        Map body = new HashMap<>();
-        body.put("name","sadsfetertertret");
-        body.put("done","0");
-        given()
-                .contentType("application/json")
-                .body("{\"sadsfetertertret\": 0}")
-                .when().post("add").then()
-                .statusCode(200);
 
-    }
+
 }
