@@ -4,6 +4,7 @@ import helper.ApiCalls;
 import helper.DataHandler;
 import helper.Utility;
 import io.restassured.response.Response;
+import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -19,7 +20,6 @@ public class ToDoAll {
     public void setup() {
         Utility c =  new Utility();
         c.init();
-
     }
 
     @Test
@@ -35,8 +35,7 @@ public class ToDoAll {
         response.then().assertThat()
                 .statusCode(200)
                 .body("name",hasItem("111testing"))
-                .body( "name" ,hasItem("122testing"))
-        ;
+                .body( "name" ,hasItem("122testing"));
 
     }
     @Test
@@ -45,12 +44,13 @@ public class ToDoAll {
         ApiCalls apiCalls = new ApiCalls();
         Response response = apiCalls.getAllItemFromList();
         response.then().assertThat()
-                .statusCode(200)
-                .body("name",hasItem("111testing"))
-                .body( "name" ,hasItem("122testing"));
+                .statusCode(200);
 
-        data.deleteAllListItem();
-
+    }
+    @After
+    public void cleanup() {
+        Utility util =  new Utility();
+        util.cleanup();
     }
 
 }

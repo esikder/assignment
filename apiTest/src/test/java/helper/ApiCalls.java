@@ -20,6 +20,7 @@ public class ApiCalls {
                 .get(ConfigHandler.getConfigValue("allEndpoint"));
         return response;
     }
+
     public Response deleteItemFromList(String id){
         Response response = (Response)RestAssured.given()
                 .contentType(ContentType.JSON).accept(ContentType.JSON)

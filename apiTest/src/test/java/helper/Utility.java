@@ -13,5 +13,7 @@ public class Utility {
     }
 
     public void cleanup() {
+        DataHandler dataHandler = new DataHandler();
+        dataHandler.deleteAllListItem();
     }
 }
