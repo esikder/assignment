@@ -27,3 +27,6 @@ dependencies {
     compile group: 'org.seleniumhq.selenium', name: 'selenium-chrome-driver', version: '2.23.0'
 
 }
+task wrapper(type: Wrapper) {
+    gradleVersion = '2.13'
+}

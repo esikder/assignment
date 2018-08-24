@@ -26,10 +26,6 @@ dependencies {
     testCompile 'com.fasterxml.jackson.core:jackson-databind:2.8.6'
 }
 
-test {
-    systemProperty "spring.profiles.active", System.properties.getProperty("spring.profiles.active")
-    reports {
-        junitXml.enabled = false
-        html.enabled = true
-    }
+task wrapper(type: Wrapper) {
+    gradleVersion = '2.13'
 }
