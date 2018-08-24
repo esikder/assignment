@@ -1,14 +1,9 @@
 package todoComponent;
 
-import io.restassured.RestAssured;
+import common.Common;
 import org.hamcrest.Matchers;
 import org.junit.Before;
 import org.junit.Test;
-
-import java.io.FileInputStream;
-import java.io.IOException;
-import java.io.InputStream;
-import java.util.Properties;
 
 import static io.restassured.RestAssured.given;
 
@@ -16,14 +11,9 @@ public class ToDoAdd {
 
 
     @Before
-    public void setup() throws IOException {
-        Properties prop =  new Properties();
-        InputStream input = new FileInputStream("config.properties");
-        prop.load(input);
-
-        RestAssured.basePath = prop.getProperty("basePath");
-        RestAssured.baseURI = prop.getProperty("baseURI");
-        RestAssured.port = Integer.parseInt( prop.getProperty("port"));
+    public void setup() {
+        Common c =  new Common();
+        c.setter();
     }
     @Test
     public void testAddItemToList(){
