@@ -35,7 +35,7 @@ public class ToDoAdd {
                 .body("name",Matchers.is(itemName))
                 .body("done", Matchers.is(false))
                 .body("__v", Matchers.is(0))
-                .body("_id",Matchers.notNullValue());;
+                .body("_id",Matchers.notNullValue());
     }
 
     @Test
@@ -54,7 +54,7 @@ public class ToDoAdd {
                 .body("name",Matchers.is(itemName))
                 .body("done", Matchers.is(false))
                 .body("__v", Matchers.is(0))
-                .body("_id",Matchers.notNullValue());;
+                .body("_id",Matchers.notNullValue());
     }
 
     @Test
@@ -69,7 +69,7 @@ public class ToDoAdd {
         response.then().assertThat()
                 .statusCode(200)
                 .body("__v", Matchers.is(0))
-                .body("_id",Matchers.notNullValue());;
+                .body("_id",Matchers.notNullValue());
     }
     @Test
     public void testAddItemToListWithoutItemName(){
@@ -84,7 +84,7 @@ public class ToDoAdd {
                 .statusCode(200)
                 .body("done", Matchers.is(false))
                 .body("__v", Matchers.is(0))
-                .body("_id",Matchers.notNullValue());;
+                .body("_id",Matchers.notNullValue());
     }
 
     @After
