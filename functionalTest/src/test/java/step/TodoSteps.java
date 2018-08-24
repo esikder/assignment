@@ -4,10 +4,10 @@ import cucumber.api.java.en.And;
 import cucumber.api.java.en.Given;
 import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
-import page.TodoPage;
+import page.TodoBasePage;
 
 public class TodoSteps {
-    TodoPage todoPage =  new TodoPage(BrowserBeanFactory.driver);
+    TodoBasePage todoPage =  new TodoBasePage(BrowserBeanFactory.driver);
 
 
     @And("^I enter an item to the list \"([^\"]*)\"$")
@@ -16,7 +16,7 @@ public class TodoSteps {
     }
     @When("^I press Enter$")
     public void iPressEnter()  {
-        todoPage.enterItem();
+        todoPage.enterKeyPressOnItem();
     }
 
 

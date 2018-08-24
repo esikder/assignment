@@ -6,13 +6,15 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedCondition;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
-import page.PageObject;
+import page.BasePage;
+
 
 import java.util.List;
 
 
 
-public class ActionWrapper extends PageObject {
+
+public class ActionWrapper extends BasePage {
 
 
     public  ActionWrapper(WebDriver driver){

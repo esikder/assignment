@@ -12,7 +12,8 @@ public class BrowserLibrary {
         switch(ConfigHandler.getConfigValue("browser")){
                 case "chrome":
                 browserPath =BrowserLibrary.class.getClassLoader().getResource("chromedriver").getPath();
-                System.setProperty("webdriver.chrome.driver", browserPath);
+                    System.setProperty("webdriver.chrome.driver", browserPath);
+
                 driver = new ChromeDriver();
                 break;
 
