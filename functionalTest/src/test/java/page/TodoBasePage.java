@@ -11,9 +11,9 @@ import org.openqa.selenium.support.FindBy;
 
 import java.util.List;
 
-public class TodoPage  extends PageObject {
+public class TodoBasePage extends BasePage {
 
-    public TodoPage(WebDriver driver){
+    public TodoBasePage(WebDriver driver){
         super(driver);
     }
 
@@ -32,21 +32,21 @@ public class TodoPage  extends PageObject {
 
     ActionWrapper action=new ActionWrapper(driver);
 
-    public  TodoPage goToUrl(){
+    public TodoBasePage goToUrl(){
         driver.get(ConfigHandler.getConfigValue("baseURI")+
                 ConfigHandler.getConfigValue("port"));
         return this;
     }
 
-    public  TodoPage addItem(String itemName){
+    public TodoBasePage addItem(String itemName){
         addTaskInput.sendKeys(itemName);
         return this;
     }
-    public  TodoPage enterItem(){
+    public TodoBasePage enterKeyPressOnItem(){
         addTaskInput.sendKeys(Keys.ENTER);
         return this;
     }
-    public  TodoPage verifyListItem(String name){
+    public TodoBasePage verifyListItem(String name){
         action.waitUntilElementAvailable(deleteButton);
         Boolean found = false;
             for (WebElement item : taskDetailsList) {
@@ -60,7 +60,7 @@ public class TodoPage  extends PageObject {
 
     }
 
-    public TodoPage deleteItem(String name) {
+    public TodoBasePage deleteItem(String name) {
         WebElement deleteSpecificItem= null;
         for (WebElement item : taskDetailsList) {
             if(item.getAttribute("value").contains(name))
@@ -70,17 +70,17 @@ public class TodoPage  extends PageObject {
         return this;
     }
 
-    public TodoPage waitUntilElementIsNotDelete(String name) {
+    public TodoBasePage waitUntilElementIsNotDelete(String name) {
         action.waitUntilElementNotAvailable(deleteButtons);
         return this;
     }
 
-    public TodoPage selectItem() {
+    public TodoBasePage selectItem() {
         action.clickWebElement(selectTask);
         return this;
     }
 
-    public TodoPage verifyTaskStatusIsCompleted() {
+    public TodoBasePage verifyTaskStatusIsCompleted() {
         action.waitUntilElementAvailable(taskDetails);
         Assert.assertTrue(taskDetails.getAttribute("class").contains("todo__done"));
         return this;
