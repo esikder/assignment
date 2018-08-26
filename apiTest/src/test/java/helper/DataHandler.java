@@ -19,6 +19,7 @@ public class DataHandler {
 
             ApiCalls apiCalls   = new ApiCalls();
             Response response =  apiCalls.postAddItemToList( body);
+            response.then().statusCode(200);
             ids.add(i,response.body().jsonPath().get("_id"));
             i++;
         }
