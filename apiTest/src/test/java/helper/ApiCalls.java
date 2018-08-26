@@ -5,7 +5,9 @@ import io.restassured.http.ContentType;
 import io.restassured.response.Response;
 
 import java.util.Map;
-
+/*
+ This class contains all the apicalls.
+  */
 public class ApiCalls {
     public Response postAddItemToList(Map body){
         Response response = (Response)RestAssured.given()

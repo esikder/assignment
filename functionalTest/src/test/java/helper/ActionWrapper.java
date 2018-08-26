@@ -13,7 +13,7 @@ import java.util.List;
 
 
 
-
+/* This class should contain generic way of handling selenium actions */
 public class ActionWrapper extends BasePage {
 
 
@@ -28,7 +28,7 @@ public class ActionWrapper extends BasePage {
                         return ((JavascriptExecutor)driver).executeScript("return document.readyState").equals("complete");
                     }
                 };
-        WebDriverWait wait = new WebDriverWait(driver, 30);
+        WebDriverWait wait = new WebDriverWait(driver, Long.parseLong(ConfigHandler.getConfigValue("timeoutInSeconds")));
         wait.until(pageLoadCondition);
 
     }

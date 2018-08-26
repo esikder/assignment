@@ -10,7 +10,7 @@ import org.openqa.selenium.WebDriver;
 
 import java.util.concurrent.TimeUnit;
 
-
+/* this class contains the driver manipulation methods.*/
 public class BrowserBeanFactory {
 
 

@@ -5,6 +5,7 @@ import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.remote.DesiredCapabilities;
 
+/* Browser definition */
 public class BrowserLibrary {
     public WebDriver getbrowser()  {
         WebDriver driver;

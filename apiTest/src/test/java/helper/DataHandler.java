@@ -6,7 +6,8 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-
+/*This class contains method for manipulating data. For different tests data needs to be created as prerequisite also data
+needs to be deleted afterwards.This class provides that facility.*/
 public class DataHandler {
 
     public List<String> addBulkListItem(HashMap<String,Integer> input){
