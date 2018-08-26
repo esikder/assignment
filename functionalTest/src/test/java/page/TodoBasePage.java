@@ -46,8 +46,9 @@ public class TodoBasePage extends BasePage {
         addTaskInput.sendKeys(Keys.ENTER);
         return this;
     }
-    public TodoBasePage verifyListItem(String name){
-        action.waitUntilElementAvailable(deleteButton);
+    public Boolean isElementWithGivenNameAvailableInList(String name){
+        action.waitUntilPageLoad();
+
         Boolean found = false;
             for (WebElement item : taskDetailsList) {
                 if (item.getAttribute("value").contains(name)){
@@ -55,8 +56,7 @@ public class TodoBasePage extends BasePage {
                     break;
                 }
         }
-        Assert.assertTrue(found);
-        return this;
+        return found;
 
     }
 

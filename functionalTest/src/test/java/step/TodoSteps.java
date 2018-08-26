@@ -4,6 +4,7 @@ import cucumber.api.java.en.And;
 import cucumber.api.java.en.Given;
 import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
+import org.junit.Assert;
 import page.TodoBasePage;
 
 public class TodoSteps {
@@ -33,7 +34,7 @@ public class TodoSteps {
 
     @Then("^I should not see \"([^\"]*)\" in the ToDo list$")
     public void iShouldNotSeeInTheToDoList(String name) throws Throwable {
-       todoPage.waitUntilElementIsNotDelete(name);
+        Assert.assertTrue(todoPage.isElementWithGivenNameAvailableInList(name) );
     }
 
     @When("^I select an item$")
@@ -49,7 +50,7 @@ public class TodoSteps {
 
     @Then("^I see \"([^\"]*)\" is available in the ToDo List$")
     public void iSeeIsAvailableInTheToDoList(String name) throws Throwable {
-        todoPage.verifyListItem(name);
+       Assert.assertTrue( todoPage.isElementWithGivenNameAvailableInList(name));
     }
 
     @When("^I edit item name to \"([^\"]*)\"$")

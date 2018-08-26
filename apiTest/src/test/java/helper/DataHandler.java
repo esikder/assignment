@@ -2,23 +2,27 @@ package helper;
 
 import io.restassured.response.Response;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
 public class DataHandler {
 
-    public void addBulkListItem(HashMap<String,Integer> input){
-
+    public List<String> addBulkListItem(HashMap<String,Integer> input){
+        List<String> ids= new ArrayList<>();
+        int i=0;
         for(Map.Entry<String,Integer> entry : input.entrySet()){
             Map body = new HashMap();
             body.put("name",entry.getKey() );
             body.put("done", entry.getValue());
 
             ApiCalls apiCalls   = new ApiCalls();
-            apiCalls.postAddItemToList( body).then().statusCode(200);
-
+            Response response =  apiCalls.postAddItemToList( body);
+            ids.add(i,response.body().jsonPath().get("_id"));
+            i++;
         }
+        return ids;
     }
 
     public void deleteAllListItem(){

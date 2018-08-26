@@ -27,6 +27,11 @@ public class ApiCalls {
                 .get(ConfigHandler.getConfigValue("deleteEndpoint")+"/"+id);
         return response;
     }
-
+    public Response postUpdateItemInList(Map body, String id){
+        Response response = (Response)RestAssured.given()
+                .contentType(ContentType.JSON).accept(ContentType.JSON)
+                .body(body).post(ConfigHandler.getConfigValue("updateEndpoint")+"/"+id);
+        return response;
+    }
 
 }

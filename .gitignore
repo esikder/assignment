@@ -5,7 +5,6 @@ target
 tmp
 .DS_Store
 .classpath
-
 .idea/
 .project
 .settings/

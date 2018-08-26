@@ -12,5 +12,5 @@ Feature: ToDo List test containing following features :
     Then I see "test_updated" is available in the ToDo List
     When I select an item
     Then the item should be completed
-    When I delete "test"
-    Then I should not see "test" in the ToDo list
+    When I delete "test_updated"
+    Then I should not see "test_updated" in the ToDo list
